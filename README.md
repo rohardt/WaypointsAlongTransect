@@ -1,2 +1,1 @@
-# WaypointsAlongTransect
-This Matlab app calculates positions (longitude and latitude) along a ship route
+WayPointsAlongTransect is a Matlab app (based on the App Designer) that can be used to calculate positions (latitude and longitude) at equidistant distance along a ship's route. From the GEBCO topography the water depth along the transect is determined and displayed graphically. The calculated waypoints are superimposed on this. Thus, in areas that are not sufficiently resolved, additional waypoints can be inserted interactively. This app is useful on cruises with research vessels to measure e.g. temperature profiles at regular intervals along a transect.
