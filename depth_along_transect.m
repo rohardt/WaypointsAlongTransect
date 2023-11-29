@@ -1,5 +1,21 @@
 function [x_rh,wdepth_rh,x_gc,wdepth_gc,lattrk_rh,lontrk_rh,lattrk_gc,lontrk_gc] = depth_along_transect(latgrd,longrd,Zgrd,distrh,distgc,LAT1,LON1,LAT2,LON2)
-%
+% From the GEBCO data set, the water depth is determined along the
+% transect given with the position at the beginning and end.
+% Input: 
+% latgrd,longrd,Zgrd :== GRIDONE_2D.mat; GEBCO data set
+% distrh :== total length in nautical miles of the transect along rhombus line
+% distgc :== total length in nautical miles of the transect along great circle
+% LAT1, LON1 :== start position of the transect
+% LAT2, LON2 :== end position of the transect
+% Output:
+% x_rh :== distance (nautical miles) vector for the rhombus line
+% wdepth_rh :== waterdepth (m) vector for the rhombus line
+% x_gc :== distance (nautical miles) vector for the great circle
+% wdepth_gc :== waterdepth (m) vector for the great circle
+% lattrk_rh,lontrk_rh :== corresponding latitudes and longitudes for the
+% rhombus line
+% lattrk_gc,lontrk_c :== corresponding latitudes and longitudes for the
+% great circle
 
 lat = [LAT1 LAT2];
 lon = [LON1 LON2];

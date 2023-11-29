@@ -4,7 +4,14 @@ function plot_map_transect_stereo(latsec,lonsec)
 fgeo = figure;
 
 LATLIM = [min(latsec) max(latsec)];
+if diff(LATLIM)==0
+    LATLIM = [min(latsec)-1 max(latsec)+1];
+end
+
 LONLIM = [min(lonsec) max(lonsec)];
+if diff(LONLIM)==0
+    LONLIM = [min(lonsec)-1 max(lonsec)+1];
+end
         [latm,lonm] = meanm(latsec,lonsec);
         OY = round(latm,0); 
         if lonm < 100

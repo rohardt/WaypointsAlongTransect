@@ -1,3 +1,31 @@
+function [latsec,lonsec,X,WD,nstat] = transect_test
+
+pn = cd;
+grdfile = fullfile(pn,'Dataset','GRIDONE_2D.mat');
+load(grdfile);
+latgrd = lat;
+longrd = lon;
+Zgrd = Z;
+clear lat lon Z;
+
+% Start/Stop of transect:
+LAT = [-68 -60];
+LON = [10 -30];
+% rhombus line:
+rhgc = "gc";
+% spacing in 60 nautical miles
+dist_stat = 60;
+% flg = 0; % nautical miles
+flg = 1; % distance = 60 minutes
+
+% latORlon = 1; % not needed if flg = 0
+% latORlon = 0; % 60 minutes longitude spacing
+latORlon = 1; % 60 minutes latitude spacing
+
+% compute
+[latsec,lonsec,X,WD,nstat] = transect(latgrd,longrd,Zgrd,LAT,LON,rhgc,dist_stat,flg,latORlon);
+
+
 function [latsec,lonsec,X,WD,nstat] = transect(latgrd,longrd,Zgrd,LAT,LON,rhgc,dist_stat,flg,latORlon)
 % [latsec,lonsec,X,WD] = transect(latgrd,longrd,Zgrd,LAT,LON,rhgc,dist_stat,flg)
 % compute stations along a section
@@ -67,6 +95,12 @@ function [slat,slon] = Make_Station_LatLon(glat,glon,dx,latlon)
 % dx == spacing in minutes
 % latlon == (1) for equal latitude spacing  
 %           (0) for equal longitude spacing
+
+% if range(glat) >= range(glon)
+%     latlon = 1;
+% else
+%     latlon = 0;
+% end
 
 dx = dx/60;
 
